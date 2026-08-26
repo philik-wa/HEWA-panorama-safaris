@@ -1,0 +1,151 @@
+/* ===== HEWA SAFARIS — SHARED CAMP CART WIDGET ===== */
+.cart-float{
+  position:fixed; bottom:26px; right:26px; z-index:210;
+  width:58px; height:58px; border-radius:50%;
+  background:#1B1712; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 12px 28px -8px rgba(0,0,0,0.45);
+  transition:transform .25s ease, box-shadow .25s ease;
+  border:1px solid #D1A550; cursor:pointer;
+}
+.cart-float:hover{transform:scale(1.08); box-shadow:0 16px 34px -8px rgba(0,0,0,0.55);}
+.cart-float svg{width:25px; height:25px;}
+.cart-badge{
+  position:absolute; top:-6px; right:-6px;
+  background:#C1701E; color:#FAF5EA; font-family:'Playfair Display',serif;
+  font-size:11px; font-weight:700; min-width:20px; height:20px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; padding:0 5px;
+  border:2px solid #FAF5EA;
+}
+.cart-badge.hidden{display:none;}
+
+.cart-overlay{
+  position:fixed; inset:0; background:rgba(20,17,12,0.55); z-index:220;
+  opacity:0; pointer-events:none; transition:opacity .3s ease;
+}
+.cart-overlay.open{opacity:1; pointer-events:auto;}
+
+.cart-drawer{
+  position:fixed; top:0; right:0; bottom:0; z-index:221;
+  width:400px; max-width:92vw; background:#FAF5EA; color:#1B1712;
+  box-shadow:-20px 0 50px -20px rgba(0,0,0,0.5);
+  transform:translateX(100%); transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  display:flex; flex-direction:column; font-family:'Playfair Display',serif;
+}
+.cart-drawer.open{transform:translateX(0);}
+.cart-head{
+  padding:26px 26px 18px; border-bottom:1px solid rgba(27,23,18,0.14);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.cart-head h3{margin:0; font-size:20px; font-weight:600;}
+.cart-close{background:none; border:none; cursor:pointer; font-size:22px; line-height:1; color:#1B1712; padding:4px;}
+.cart-sub{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#96551A; font-weight:600; padding:14px 26px 0;}
+.cart-items{flex:1; overflow-y:auto; padding:10px 26px 20px;}
+.cart-empty{padding:40px 0; text-align:center; color:#2A241C; opacity:0.65; font-size:14px;}
+.cart-item{
+  display:flex; gap:12px; padding:16px 0; border-bottom:1px solid rgba(27,23,18,0.1);
+}
+.cart-item-info{flex:1;}
+.cart-item-tier{font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:#C1701E; font-weight:700;}
+.cart-item-name{font-size:15px; font-weight:500; margin-top:4px;}
+.cart-item-dest{font-size:12px; color:#2A241C; opacity:0.7; margin-top:2px;}
+.cart-item-price{font-size:13px; color:#1B1712; margin-top:6px; font-weight:600;}
+.cart-item-remove{
+  background:none; border:none; cursor:pointer; color:#96551A; font-size:12px;
+  text-decoration:underline; align-self:flex-start; padding:0; font-family:'Playfair Display',serif;
+}
+.cart-foot{border-top:1px solid rgba(27,23,18,0.14); padding:20px 26px 26px;}
+.cart-total-row{display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:#2A241C;}
+.cart-total-row b{font-size:20px; color:#C1701E; font-family:'Playfair Display',serif;}
+.cart-note{font-size:11px; color:#2A241C; opacity:0.65; margin:8px 0 18px; line-height:1.5; font-style:italic;}
+.cart-actions{display:flex; flex-direction:column; gap:10px;}
+.cart-btn{
+  display:block; width:100%; text-align:center; padding:14px; font-size:12px;
+  letter-spacing:0.1em; text-transform:uppercase; font-weight:600; border-radius:2px;
+  cursor:pointer; border:1px solid transparent; font-family:'Playfair Display',serif;
+  box-sizing:border-box;
+}
+.cart-btn-primary{background:#25D366; color:#0f2a17; border-color:#25D366;}
+.cart-btn-primary:hover{opacity:0.9;}
+.cart-btn-secondary{background:#1B1712; color:#FAF5EA; border-color:#1B1712;}
+.cart-btn-secondary:hover{background:transparent; color:#1B1712;}
+.cart-btn-clear{background:none; color:#96551A; text-decoration:underline; font-weight:500; letter-spacing:0.02em; text-transform:none; font-size:12px;}
+
+.cart-toast{
+  position:fixed; bottom:96px; right:26px; z-index:230;
+  background:#1B1712; color:#FAF5EA; padding:13px 20px; border-radius:3px;
+  font-size:13px; font-family:'Playfair Display',serif; opacity:0; transform:translateY(10px);
+  transition:.35s ease; pointer-events:none; border:1px solid #D1A550; max-width:260px;
+}
+.cart-toast.show{opacity:1; transform:translateY(0);}
+
+/* ===== TIER PICKER (used on destinations.html and package pages) ===== */
+.tier-legend{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 6px;}
+.tier-pill{
+  font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;
+  padding:6px 14px; border-radius:20px; border:1px solid rgba(27,23,18,0.18); color:#2A241C;
+}
+.tier-pill.tier-budget{border-color:#4C7A4C; color:#2f5230;}
+.tier-pill.tier-mid{border-color:#B8893A; color:#96551A;}
+.tier-pill.tier-luxury{border-color:#C1701E; color:#C1701E;}
+.tier-pill.tier-ultra{border-color:#1B1712; color:#1B1712; background:#EADFC7;}
+
+.tier-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:26px;}
+.tier-card{
+  background:#FAF5EA; border:1px solid rgba(27,23,18,0.14); border-radius:6px; overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.tier-card-img{height:150px; width:100%; object-fit:cover; display:block; filter:saturate(0.95);}
+.tier-card-body{padding:18px 18px 20px; display:flex; flex-direction:column; flex:1;}
+.tier-badge{
+  align-self:flex-start; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;
+  padding:4px 10px; border-radius:12px; margin-bottom:10px;
+}
+.tier-badge.tier-budget{background:#e7efe4; color:#2f5230;}
+.tier-badge.tier-mid{background:#f4e9d3; color:#96551A;}
+.tier-badge.tier-luxury{background:#f6ddc4; color:#a1500f;}
+.tier-badge.tier-ultra{background:#1B1712; color:#D1A550;}
+.tier-card h4{font-size:16px; font-weight:600; line-height:1.3;}
+.tier-card .tier-desc{font-size:12.5px; color:#2A241C; opacity:0.8; line-height:1.55; margin-top:8px; flex:1;}
+.tier-card .tier-price{margin-top:14px; font-size:17px; font-weight:700; color:#C1701E;}
+.tier-card .tier-price span{display:block; font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#2A241C; opacity:0.65; margin-top:2px;}
+.tier-add-btn{
+  margin-top:14px; width:100%; padding:11px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+  font-weight:600; background:#1B1712; color:#FAF5EA; border:1px solid #1B1712; cursor:pointer; border-radius:2px;
+  transition:.25s ease; font-family:'Playfair Display',serif;
+}
+.tier-add-btn:hover{background:#C1701E; border-color:#C1701E;}
+.tier-add-btn.added{background:#4C7A4C; border-color:#4C7A4C;}
+
+.pkg-locations{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+.loc-chip{
+  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600;
+  padding:8px 16px; border-radius:20px; border:1px solid #C1701E; color:#C1701E; transition:.25s ease;
+}
+.loc-chip:hover{background:#C1701E; color:#FAF5EA;}
+.loc-chip svg{width:12px; height:12px;}
+
+.dest-link{
+  display:inline-block; margin-top:12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  font-weight:600; color:#D1A550; border-bottom:1px solid rgba(209,165,80,0.5); padding-bottom:2px;
+}
+.dest-link:hover{color:#FAF5EA; border-color:#FAF5EA;}
+
+.pkg-camps-section{padding:0 0 100px;}
+.pkg-camps-head{max-width:680px; margin-bottom:8px;}
+.pkg-camps-head h2{font-size:clamp(26px,3.2vw,36px); margin-top:12px;}
+.pkg-camps-head p{font-size:15px; line-height:1.8; color:#2A241C; margin-top:14px;}
+.pkg-camps-more{margin-top:24px; text-align:center;}
+.pkg-camps-more a{
+  display:inline-block; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;
+  color:#C1701E; border-bottom:1px solid #C1701E; padding-bottom:2px;
+}
+
+@media (max-width:1080px){
+  .tier-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:760px){
+  .tier-grid{grid-template-columns:1fr;}
+  .cart-drawer{width:100vw;}
+  .cart-float{right:20px; bottom:20px; width:52px; height:52px;}
+  .cart-float svg{width:22px; height:22px;}
+}

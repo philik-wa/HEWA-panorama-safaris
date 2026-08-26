@@ -1,0 +1,58 @@
+/* =========================================
+   MOBILE & TABLET OPTIMIZATION (Drop-in)
+   ========================================= */
+
+/* --- Tablet (Tablets & Large Phones) --- */
+/* ===== UPDATED TABLET SETTINGS (fixes unbalanced view) ===== */
+@media (max-width:1080px){
+  .wrap{padding:0 22px;}
+  nav.primary-nav{gap:20px;} /* Fixes crammed nav */
+  .dest-grid{grid-template-columns:repeat(2,1fr); gap:16px;}
+  .about-inner{grid-template-columns:1fr; gap:60px;}
+  .about-visual{order:-1;}
+  .about-visual .frame{height:380px;}
+  .journey-grid{grid-template-columns:repeat(2,1fr);}
+  .feature-grid{grid-template-columns:repeat(2,1fr); row-gap:44px;}
+  .test-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr; row-gap:50px;}
+
+  /* Clean 2-column gallery for tablets */
+  .gallery-grid{grid-template-columns:repeat(2,1fr); gap:12px;}
+  .g1, .g6{grid-column:span 2; aspect-ratio:16/9;}
+  .g2, .g3, .g4, .g5{grid-column:span 1; aspect-ratio:4/3;}
+}
+
+/* ===== UPDATED MOBILE SETTINGS (fixes broken gallery & hero) ===== */
+@media (max-width:760px){
+  .wrap{padding:0 18px;}
+  
+  /* Hero fixes for Safari and Mobile */
+  .hero{height:100dvh; min-height:100vh; max-height:none;}
+  .hero-content h1{font-size:clamp(28px, 9vw, 44px);}
+  .hero-content p{font-size:15px;}
+  
+  /* Buttons for thumbs */
+  .cta-btn, .btn-outline{width:100%; padding:16px; text-align:center; display:block; margin-bottom:10px;}
+  .hero-cta, .cta-buttons{width:100%;}
+  
+  /* Stack grids */
+  .dest-grid{grid-template-columns:1fr;}
+  .journey-grid{grid-template-columns:1fr;}
+  .feature-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  
+  /* Fix About Section Badge */
+  .about-badge{left:10px; right:10px; max-width:none; width:auto; position:relative; margin-top:20px;}
+  .about-visual .frame{height:300px;}
+  
+  /* Perfect 2-column gallery on mobile */
+  .gallery-grid{grid-template-columns:1fr 1fr; gap:10px;}
+  .g1, .g6{grid-column:span 2; aspect-ratio:16/9;}
+  .g2, .g3, .g4, .g5{grid-column:span 1; aspect-ratio:1/1;}
+  
+  /* Clean Nav */
+  nav.primary-nav{padding-top:80px;}
+  nav.primary-nav a{font-size:16px; padding:10px 0;}
+}
+
